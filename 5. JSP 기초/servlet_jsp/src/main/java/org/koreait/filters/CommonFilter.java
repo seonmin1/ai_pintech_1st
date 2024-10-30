@@ -6,10 +6,10 @@ import jakarta.servlet.annotation.WebInitParam;
 
 import java.io.IOException;
 
-@WebFilter(value = {"/*"}, initParams = {
+/*@WebFilter(value = {"/*"}, initParams = {
         @WebInitParam(name="k1", value = "v1"),
         @WebInitParam(name="k2", value = "v2")
-}) // 주소 설정
+}) // 주소 설정*/
 public class CommonFilter implements Filter {
 
     @Override
