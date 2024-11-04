@@ -2,6 +2,7 @@ package org.koreait.member.services;
 
 import org.koreait.global.validators.Validator;
 import org.koreait.member.controllers.RequestJoin;
+import org.koreait.member.repository.MemberRepository;
 import org.koreait.member.validator.AdvancedJoinValidator;
 import org.koreait.member.validator.JoinValidator;
 
@@ -13,25 +14,32 @@ import org.koreait.member.validator.JoinValidator;
  */
 public class JoinService {
 
-    private Validator<RequestJoin> joinValidator;
+    private final Validator<RequestJoin> validator;
+    private final MemberRepository repository;
 
     /**
      * 의존 관계
-     * JoinService 객체 생성을 위해서는 joinValidator 필수!
+     * JoinService 객체 생성을 위해서는 validator 필수!
+     * 위에서 private final로 정의한 변수를 초기화 시켜주어야 함
      */
-    public JoinService(Validator<RequestJoin> joinValidator) {
-        this.joinValidator = joinValidator;
+    public JoinService(Validator<RequestJoin> validator, MemberRepository repository) {
+        this.validator = validator;
+        this.repository = repository;
     }
 
     /**
      * 연관 관계
      * JoinService 객체를 생성할 때 필수는 아니기 때문
      */
-    /*public void setValidator(Validator<RequestJoin> joinValidator) {
-        this.joinValidator = joinValidator;
+    /*public void setValidator(Validator<RequestJoin> validator) {
+        this.validator = validator;
     }*/
 
     public void process(RequestJoin form) {
-
+        /**
+         * form, joinService에 서로 영향을 주고 받는 관계 - 변화에 영향을 받는다
+         * 통제가 필요! - 메서드 안에 감출 필요! 캡슐화! - 변화에 닫힌 구조! (확장에 열려있고 변화에 갇혀있다) - 개방 폐쇄 원칙
+         */
+        validator.check(form);
     }
 }
