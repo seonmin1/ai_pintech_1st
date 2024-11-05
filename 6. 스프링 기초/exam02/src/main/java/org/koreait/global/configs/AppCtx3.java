@@ -32,7 +32,7 @@ public class AppCtx3 {
         return new MemberRepository();
     }*/
 
-    @Bean
+    /*@Bean
     public JoinService joinService() {
         return new JoinService();
     }
@@ -40,7 +40,7 @@ public class AppCtx3 {
     @Bean
     public InfoService infoService() {
         return new InfoService();
-    }
+    }*/
 
     // @Bean
     public DateTimeFormatter formatter() {

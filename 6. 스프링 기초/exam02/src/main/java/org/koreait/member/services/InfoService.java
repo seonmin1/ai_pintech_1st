@@ -5,6 +5,7 @@ import org.koreait.member.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.Optional;
 /**
  * MemberRepository를 의존 - 의존 관계
  */
-public class InfoService {
+@Service
+public class InfoService { // 빈 이름 infoService
     private MemberRepository repository;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
 
