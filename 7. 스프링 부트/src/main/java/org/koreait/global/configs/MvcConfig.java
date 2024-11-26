@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@EnableScheduling // 스케줄링 설정 자동화
 //  @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer { // WebMvcConfigurer 인터페이스 구현 필수!
     // private final JoinValidator joinValidator;
@@ -25,8 +27,8 @@ public class MvcConfig implements WebMvcConfigurer { // WebMvcConfigurer 인터�
     }*/
 
     @Bean
-    @Profile("prod")
-    @Primary // 빈이 충돌할 때 가장 먼저 선택
+    /*@Profile("prod")
+    @Primary // 빈이 충돌할 때 가장 먼저 선택*/
     public Greet greetProd() {
         System.out.println("prod profile!");
         Greet greet = new Greet();
@@ -35,7 +37,7 @@ public class MvcConfig implements WebMvcConfigurer { // WebMvcConfigurer 인터�
         return greet;
     }
 
-    @Bean
+    /*@Bean
     @Profile("dev")
     public Greet greetDev() {
         System.out.println("dev profile!");
@@ -43,5 +45,5 @@ public class MvcConfig implements WebMvcConfigurer { // WebMvcConfigurer 인터�
         greet.setName("dev에서..");
 
         return greet;
-    }
+    }*/
 }
